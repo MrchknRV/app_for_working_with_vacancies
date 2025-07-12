@@ -83,14 +83,16 @@ class HH(HeadHunterAPI):
                     raise KeyError("Ключ 'items' отсутствует.")
 
                 for vacancy in data["items"]:
-                    self.__vacancies.append({
-                        "name": vacancy["name"],
-                        "link": vacancy["alternate_url"],
-                        "salary": vacancy["salary"],
-                        "description": vacancy["snippet"]["requirement"],
-                        "area": vacancy["area"]["name"],
-                        "contact": vacancy["department"]["name"] if vacancy["department"] else "Не указано."
-                    })
+                    self.__vacancies.append(
+                        {
+                            "name": vacancy["name"],
+                            "link": vacancy["alternate_url"],
+                            "salary": vacancy["salary"],
+                            "description": vacancy["snippet"]["requirement"],
+                            "area": vacancy["area"]["name"],
+                            "contact": vacancy["department"]["name"] if vacancy["department"] else "Не указано.",
+                        }
+                    )
             else:
                 raise ValueError("An empty response from the server")
             self.__params["page"] += 1

@@ -86,7 +86,7 @@ class Vacancy:
         if not isinstance(link, str):
             raise ValueError("Некорректный url-адрес")
         else:
-            link_regex = "^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$"
+            link_regex = r"^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$"
             if bool(re.match(link_regex, link, re.IGNORECASE)):
                 self.link = link
             else:
