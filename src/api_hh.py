@@ -97,11 +97,3 @@ class HH(HeadHunterAPI):
                 raise ValueError("An empty response from the server")
             self.__params["page"] += 1
         return self.__vacancies
-
-
-hh = HH()
-call = 0
-for vac in hh.get_vacancies():
-    if call < 5:
-        print(vac)
-    break
