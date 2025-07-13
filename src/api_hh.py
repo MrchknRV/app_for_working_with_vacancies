@@ -54,7 +54,7 @@ class HH(HeadHunterAPI):
         response.raise_for_status()
         return response
 
-    def get_vacancies(self, text="", page: int = 5):
+    def get_vacancies(self, text="", page: int = 1):
         """Возвращает список вакансий по заданному поисковому запросу.
 
         Запрашивает вакансии с указанного количества страниц (по умолчанию — 5).
@@ -97,3 +97,11 @@ class HH(HeadHunterAPI):
                 raise ValueError("An empty response from the server")
             self.__params["page"] += 1
         return self.__vacancies
+
+
+hh = HH()
+call = 0
+for vac in hh.get_vacancies():
+    if call < 5:
+        print(vac)
+    break
