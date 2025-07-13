@@ -50,7 +50,7 @@ class AbstractFileWorker(ABC):
 
     @abstractmethod
     def clear_vacancies(self, *args, **kwargs):
-        """Удаляет вакансии из хранилища.
+        """Удаляет все вакансии из хранилища.
 
         Args:
             *args: Позиционные аргументы для реализации в дочерних классах.
@@ -79,4 +79,33 @@ class AbstractFileWorker(ABC):
 
     @abstractmethod
     def del_vacancy(self, *args, **kwargs):
+        """Удаляет вакансии из хранилища по заданным критериям.
+
+        Метод должен быть реализован в дочерних классах для конкретных типов хранилищ.
+
+        Args:
+            *args: Позиционные аргументы для реализации в дочерних классах.
+                Может включать:
+                - id вакансии
+                - название должности
+                - другие идентификаторы
+            **kwargs: Именованные аргументы для реализации в дочерних классах.
+                Может включать:
+                - key_word: Ключ для поиска (например, 'name', 'salary')
+                - value_word: Значение для поиска
+                - other_filters: Дополнительные параметры фильтрации
+
+        Returns:
+            bool: True если удаление прошло успешно, False в противном случае.
+
+        Raises:
+            NotImplementedError: Если метод не реализован в дочернем классе.
+            KeyError: Если передан несуществующий ключ для поиска.
+            ValueError: Если переданные параметры некорректны.
+
+        Examples:
+             # Удаление по названию вакансии
+            del_vacancy(key_word='name', value_word='Python Developer')
+            True
+        """
         raise NotImplementedError

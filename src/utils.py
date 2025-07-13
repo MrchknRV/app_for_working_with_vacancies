@@ -1,5 +1,3 @@
-from dotenv import load_dotenv
-
 from src.vacancies import Vacancy
 
 # logger = logging.getLogger(__name__)
@@ -11,10 +9,24 @@ from src.vacancies import Vacancy
 # logger.addHandler(file_handler)
 # logger.setLevel(logging.DEBUG)
 
-load_dotenv()
-
 
 def get_top_vacancies_for_salary(vacancies: list[dict], top: int = 5) -> list[Vacancy]:
+    """
+    Возвращает топ N вакансий по зарплате (по убыванию).
+
+    Параметры:
+        vacancies (List[dict]): Список вакансий в виде словарей.
+        top (int): Количество возвращаемых вакансий (по умолчанию 5).
+
+    Возвращает:
+        List[Vacancy]: Топ N вакансий, отсортированных по зарплате (от высокой к низкой).
+
+    Пример:
+        >>> vacancies = [{"salary_from": 100, "salary_to": 200}, {"salary_from": 150, "salary_to": 300}]
+        >>> top_vacancies = get_top_vacancies_for_salary(vacancies, top=2)
+        >>> len(top_vacancies)
+        2
+    """
     transform_list = [Vacancy(**vac) for vac in vacancies]
     return sorted(transform_list, reverse=True)[:top]
 
