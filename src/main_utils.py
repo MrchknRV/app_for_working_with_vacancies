@@ -18,7 +18,8 @@ def greeting():
         """
     )
     print(
-        "Здесь вы можете легко находить подходящие вакансии, управлять избранными, фильтровать результаты и сохранять\n")
+        "Здесь вы можете легко находить подходящие вакансии, управлять избранными, фильтровать результаты и сохранять\n"
+    )
 
 
 def user_menu():
@@ -73,7 +74,7 @@ def iterate_vacancy(vacancies):
 
 def save_vacancies(vacancies):
     user_input = input("\nЖелаете сохранить все вакансии(да/нет):\n> ").lower().strip()
-    if user_input == 'да':
+    if user_input == "да":
         FILE.add_vacancy(vacancies)
         print("Вакансии сохранены")
     else:

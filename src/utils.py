@@ -18,6 +18,7 @@ def get_top_vacancies_for_salary(vacancies: list[dict], top: int = 5) -> list[Va
     transform_list = [Vacancy(**vac) for vac in vacancies]
     return sorted(transform_list, reverse=True)[:top]
 
+
 # def get_filtered_vacancies_for_str(vacancies: list[dict], search_word: str = None) -> list[dict]:
 #     """Функция принимает список словарей с данными о вакансиях, строку поиска и ключ поиска,
 #     а возвращает список словарей, у которых в описании есть данная строка."""

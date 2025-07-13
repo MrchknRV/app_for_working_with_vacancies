@@ -1,7 +1,7 @@
 from config import PATH
 from src.api_hh import HH
-from src.main_utils import greeting, iterate_vacancy, user_menu, validate_integer_input, save_vacancies, \
-    viewing_favorites
+from src.main_utils import (greeting, iterate_vacancy, save_vacancies, user_menu, validate_integer_input,
+                            viewing_favorites)
 from src.utils import get_top_vacancies_for_salary
 from src.vacancy_worker import JSONWorker
 
@@ -27,15 +27,12 @@ def main():
                 iterate_vacancy(vacancies)
                 save_vacancies(vacancies)
 
-
             except Exception as exc:
                 print(f"{exc}")
                 break
 
         elif user_input == "2":
-            user_input = input("\n1. Сохраненные вакансии\n"
-                               "2. Новые вакансии\n"
-                               "3. Назад\n").strip()
+            user_input = input("\n1. Сохраненные вакансии\n" "2. Новые вакансии\n" "3. Назад\n").strip()
             if user_input == "1":
                 vacancies = WORK_FILE.get_vacancy()
                 try:

@@ -4,7 +4,6 @@ import re
 from src.base_classes import AbstractFileWorker
 
 
-
 class JSONWorker(AbstractFileWorker):
     def __init__(self, filename="data/vacancies.json"):
         self.__filename = filename
