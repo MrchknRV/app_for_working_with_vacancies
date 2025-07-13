@@ -1,7 +1,7 @@
 import re
 from functools import total_ordering
 
-from src.utils import get_convert_salary
+from src.object_utils import get_convert_salary
 
 
 @total_ordering

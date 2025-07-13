@@ -1,7 +1,8 @@
 import json
+import re
 
 from src.base_classes import AbstractFileWorker
-from src.vacancies import Vacancy
+
 
 
 class JSONWorker(AbstractFileWorker):
@@ -19,7 +20,7 @@ class JSONWorker(AbstractFileWorker):
         """
         try:
             with open(self.__filename, "r", encoding="UTF-8") as f:
-                vacancies = (Vacancy(**el) for el in json.load(f))
+                vacancies = json.load(f)
                 return vacancies
         except FileNotFoundError:
             print(f"Файл {self.__filename} не найден")
@@ -52,7 +53,25 @@ class JSONWorker(AbstractFileWorker):
         with open(self.__filename, "w", encoding="UTF-8") as f:
             json.dump(cur_vacancies, f, ensure_ascii=False, indent=4)
 
-    def del_vacancy(self):
+    def clear_vacancies(self):
         """Очищает файл с вакансиями (удаляет все данные)."""
         with open(self.__filename, "w") as f:
             json.dump([], f)
+
+    def del_vacancy(self, key_word: str = None, value_word: str = None):
+        try:
+            with open(self.__filename, encoding="UTF-8") as f:
+                cur_vacancies = json.load(f)
+            if key_word and value_word:
+                new_vacancies = [
+                    vacancy
+                    for vacancy in cur_vacancies
+                    if not re.search(value_word, vacancy.get(key_word), re.IGNORECASE) is not None
+                ]
+                with open(self.__filename, "w", encoding="UTF-8") as f:
+                    json.dump(new_vacancies, f, ensure_ascii=False, indent=4)
+            else:
+                pass
+        except Exception as ex:
+            print(f"Произошла ошибка {ex}")
+            return []

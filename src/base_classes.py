@@ -49,7 +49,7 @@ class AbstractFileWorker(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def del_vacancy(self, *args, **kwargs):
+    def clear_vacancies(self, *args, **kwargs):
         """Удаляет вакансии из хранилища.
 
         Args:
@@ -75,4 +75,8 @@ class AbstractFileWorker(ABC):
         Raises:
             NotImplementedError: Если метод не реализован в дочернем классе.
         """
+        raise NotImplementedError
+
+    @abstractmethod
+    def del_vacancy(self, *args, **kwargs):
         raise NotImplementedError
