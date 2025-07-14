@@ -23,10 +23,10 @@ class JSONWorker(AbstractFileWorker):
                 return vacancies
         except FileNotFoundError:
             print(f"Файл {self.__filename} не найден")
-            return (v for v in [])
+            return []
         except json.JSONDecodeError:
             print(f"Файл {self.__filename} содержит некорректный JSON")
-            return (v for v in [])
+            return []
 
     def add_vacancy(self, vacancies: list[dict]) -> None:
         """Добавляет вакансии в JSON-файл, исключая дубликаты по названию.

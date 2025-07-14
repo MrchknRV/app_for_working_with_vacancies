@@ -13,6 +13,7 @@ class HeadHunterAPI(ABC):
         """Метод подключения к API"""
         raise NotImplementedError
 
+    @abstractmethod
     def get_vacancies(self, *args, **kwargs):
         """Метод получения вакансий"""
         raise NotImplementedError
